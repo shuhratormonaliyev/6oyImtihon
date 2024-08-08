@@ -1,0 +1,36 @@
+.adminContainer {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .usersList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .userItem {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userName {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .userEmail, .userRole {
+    margin: 0.25rem 0;
+    color: #666;
+  }
+  
+  .userEmail {
+    font-style: italic;
+  }
+  
+  .userRole {
+    text-transform: capitalize;
+  }
