@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import styles from '../styles/Auth.module.css';
+import styles from '../styles/Admin.module.css';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -32,11 +32,11 @@ const Auth = () => {
         localStorage.setItem('token', data.access_token);
         navigate('/admin');
       } else {
-        alert('Login failed. Please check your credentials.');
+        alert('Tizimga kirishda xatolik yuz berdi. Hisob malumotlaringizni tekshiring.');
       }
     } catch (error) {
       console.error('Login error:', error);
-      alert('An error occurred during login.');
+      alert('Tizimga kirishda xatolik yuz berdi.');
     }
   };
 
@@ -54,14 +54,14 @@ const Auth = () => {
       });
       const data = await response.json();
       if (data.id) {
-        alert('Sign up successful. Please log in.');
+        alert('Royxatdan otish muvaffaqiyatli. Iltimos, tizimga kiring.');
         setIsLogin(true);
       } else {
-        alert('Sign up failed. Please try again.');
+        alert('Royxatdan otish amalga oshmadi. Iltimos, yana bir bor urinib koring.');
       }
     } catch (error) {
       console.error('Sign up error:', error);
-      alert('An error occurred during sign up.');
+      alert('Royxatdan otish paytida xatolik yuz berdi.');
     }
   };
 
@@ -103,7 +103,7 @@ const Auth = () => {
         </button>
       </form>
       <p className={styles.switchMode}>
-        {isLogin ? "Don't have an account? " : "Already have an account? "}
+        {isLogin ? "Royhatdan otish" : "Tizimga kirish"}
         <button onClick={() => setIsLogin(!isLogin)} className={styles.switchButton}>
           {isLogin ? 'Register' : 'Login'}
         </button>

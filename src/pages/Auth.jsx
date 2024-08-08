@@ -25,7 +25,7 @@ const Auth = () => {
         localStorage.setItem("userId", user.id);
         navigate("/admin");
       } else {
-        alert("Foydalanuvchi topilmadi. Hisob maʼlumotlaringizni tekshiring.");
+        alert("Foydalanuvchi topilmadi. Hisob malumotlaringizni tekshiring.");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -133,6 +133,7 @@ const Auth = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

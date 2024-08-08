@@ -1,0 +1,52 @@
+button h3 {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+button h4 {
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+button h3:hover {
+    background-color: #0056b3;
+}
+button h4:hover {
+    background-color: #0056b3;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: column;
+    align-items: center;
+    gap: 20px;
+}
+p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
