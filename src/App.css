@@ -115,6 +115,23 @@ table {
   .delete-btn:hover {
     color: #c82333;
   }
-  body {
+  /* body {
     background-color: #ebeb6a;
+} */
+
+.save-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 85px;
+    height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.save-btn p {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    margin-top: 20px;
 }

@@ -69,9 +69,8 @@ const Save = () => {
           value={age}
           onChange={(e) => setAge(e.target.value)}
         />
-       
+        <button type="submit" className="save-btn"><h6>Saqlash</h6></button>
       </form>
-
       <table>
         <thead>
           <tr>
