@@ -24,14 +24,16 @@
   } */
   
   /* button {
+    width: 70px;
+    height: 40px;
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-   */
+  } */
+  
   table {
     width: 100%;
     border-collapse: collapse;
@@ -59,17 +61,20 @@
   }
   form input:nth-child(3) {
     margin-top: 20px;
+    margin-bottom: 20px;;
 }
 form input:nth-child(2) {
     margin-top: 20px;
 }
-form button {
-    margin-top: 20px;
+form button h6 {
+
+    margin-top: 25px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 14px 20px;
 }
-
-
-
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -110,3 +115,6 @@ table {
   .delete-btn:hover {
     color: #c82333;
   }
+  body {
+    background-color: #ebeb6a;
+}

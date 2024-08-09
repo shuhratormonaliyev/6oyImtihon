@@ -42,6 +42,9 @@
   }
   
   .switchButton {
+    margin-left: 48px;
+    width: 360px;
+    height: 40px;
     margin-top: 1rem;
     background-color: transparent;
     border: none;
@@ -154,6 +157,8 @@ form input {
   line-height: 12px;
   letter-spacing: 0.30000001192092896px;
   padding-left: 48px;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 .passwordText {
   font-family: sans-serif;
@@ -249,7 +254,6 @@ form input {
    margin-top: 10px;
    margin-left: 150px;
 }
-
 .googleButton{
   width: 360px;
   height: 40px;
@@ -315,11 +319,32 @@ form input {
     font-size: 1rem;
     transition: background-color 0.3s;
 }
-.signInButton p {
-  width: 30px;
-  height: 20px;
- color: white;
- display: flex;
- justify-content: center;
- align-items: center;
-} 
+form {
+   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+form input:nth-child(3) {
+    margin-top: 20px;
+}
+.passwordText {
+    margin-top: 20px;
+    margin-left: 48px;
+    margin-bottom: 10px;
+    
+}
+body {
+    font-family: sans-serif;
+}
+form p {
+    margin-top: 10px;
+    margin-right: 500px;
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0.30000001192092896px;
+    color: #333333; 
+}

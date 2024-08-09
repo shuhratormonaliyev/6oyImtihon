@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUsers } from "../utils/api";
 import styles from "../styles/Auth.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -15,21 +14,31 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const users = await getUsers();
-      const user = users.find((u) => u.email === email);
-      if (user) {
-        localStorage.setItem("token", "fake_token");
-        localStorage.setItem("userId", user.id);
-        navigate("/admin");
-      } else {
-        alert("Foydalanuvchi topilmadi. Hisob malumotlaringizni tekshiring.");
+      const response = await fetch("https://api.escuelajs.co/api/v1/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Login failed");
       }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.access_token);
+      navigate("/admin");
     } catch (error) {
       console.error("Error:", error);
-      alert("Xatolik yuz berdi. Iltimos, yana bir bor urinib ko'ring.");
+      alert(`Login failed: ${error.message}`);
     }
   };
 
@@ -43,15 +52,15 @@ const Auth = () => {
           name: email.split("@")[0],
           email,
           password,
-          avatar: "https://api.lorem.space/image/face?w=640&h=480",
+          avatar: "https://api.escuelajs.co/api/v1/files/dummy-avatar.jpg",
         }),
       });
       const data = await response.json();
       if (data.id) {
-        alert("Roʻyxatdan oʻtish muvaffaqiyatli. Administrator paneliga yoʻnaltirilmoqda.");
+        alert("Royxatdan otish muvaffaqiyatli. Administrator paneliga yonaltirilmoqda.");
         navigate("/admin");
       } else {
-        alert("Ro‘yxatdan o‘tish amalga oshmadi. Iltimos, yana bir bor urinib ko'ring.");
+        alert("Royxatdan otish amalga oshmadi. Iltimos, yana bir bor urinib ko'ring.");
       }
     } catch (error) {
       console.error("Sign up error:", error);
@@ -64,7 +73,6 @@ const Auth = () => {
       <div className={styles.imageSection}>
         <img src={light} alt="Lighthouse" className={styles.backgroundImage} />
       </div>
-
       <div className={styles.formSection}>
         <div className={styles.formContainer}>
           <div className={styles.logoContainer}>
@@ -73,7 +81,7 @@ const Auth = () => {
           </div>
           <h2 className={styles.welcomeText}>Nice to see you again</h2>
           <h3 className={styles.loginText}>Login</h3>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <input
               type="text"
               value={email}
@@ -84,7 +92,7 @@ const Auth = () => {
             />
 
             <div className={styles.passwordContainer}>
-            <div className={styles.passwordText}>Password</div>
+              <div className={styles.passwordText}>Password</div>
               <input
                 type={showPassword ? "text" : "password"}
                 value={password}
@@ -117,7 +125,7 @@ const Auth = () => {
             </div>
            
             <button type="submit" className={styles.signInButton}>
-             <p> Sign in</p>
+              <p>Sign in</p>
             </button>
           </form>
           <button className={styles.googleButton}>
@@ -127,13 +135,12 @@ const Auth = () => {
           <p className={styles.signUpText}>
             Don't have an account?{" "}
             <button onClick={handleSignUp} className={styles.signUpButton}>
-             <p>Sign up now</p>
+              <p>Sign up now</p>
             </button>
           </p>
         </div>
       </div>
     </div>
-    
   );
 };
 

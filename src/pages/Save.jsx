@@ -31,10 +31,11 @@ const Save = () => {
   const handleDelete = (index, field) => {
     const updatedPeople = people.map((person, i) => {
       if (i === index) {
-        return { ...person, [field]: "" };
+        const { [field]: _, ...rest } = person;
+        return rest;
       }
       return person;
-    });
+    }).filter(person => Object.keys(person).length > 0); 
     setPeople(updatedPeople);
     localStorage.setItem('people', JSON.stringify(updatedPeople));
   };
@@ -68,7 +69,7 @@ const Save = () => {
           value={age}
           onChange={(e) => setAge(e.target.value)}
         />
-        <button type="submit">Saqlash</button>
+       
       </form>
 
       <table>
